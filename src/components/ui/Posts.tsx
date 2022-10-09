@@ -4,12 +4,12 @@ import SimplePost from './SimplePost';
 const Posts = ({ allPosts }: IAllPosts) => {
   return (
     <section>
-      <div>
+      <ul>
         {allPosts &&
           allPosts.map(({ ...props }) => (
             <SimplePost key={props.slug} {...props} />
           ))}
-      </div>
+      </ul>
     </section>
   );
 };
