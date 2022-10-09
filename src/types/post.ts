@@ -1,8 +1,8 @@
 export interface IAllPosts {
-  allPosts: ISimplePost[];
+  allPosts: IPreviewPost[];
 }
 
-export interface ISimplePost {
+export interface IPreviewPost {
   title: string;
   description: string;
   date: string;

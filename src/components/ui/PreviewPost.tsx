@@ -1,7 +1,7 @@
-import type { ISimplePost } from '@src/types/post';
+import type { IPreviewPost } from '@src/types/post';
 import Link from 'next/link';
 
-const PreviewPost = ({ title, description, date, slug }: ISimplePost) => {
+const PreviewPost = ({ title, description, date, slug }: IPreviewPost) => {
   return (
     <li className="mb-3">
       <Link href={`/posts/${encodeURIComponent(slug)}`}>
