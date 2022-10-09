@@ -1,8 +1,4 @@
-type Props = {
-  children?: React.ReactNode;
-};
-
-const Container = ({ children }: Props) => {
+const Container = ({ children }: { children?: React.ReactNode }) => {
   return <div>{children}</div>;
 };
 
