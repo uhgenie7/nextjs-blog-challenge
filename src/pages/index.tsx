@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Layout from '@src/components/ui/Layout';
 import Container from '@src/components/ui/Container';
-import { getAllPosts } from '@src/utils/getAllPosts';
+import { getAllPostsData } from '@src/utils/getPosts';
 import Posts from '@src/components/ui/Posts';
 import type { IAllPosts } from '@src/types/post';
 
@@ -19,7 +19,7 @@ const Home = ({ allPosts }: IAllPosts) => {
 };
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(['title', 'date', 'description', 'slug']);
+  const allPosts = getAllPostsData(['title', 'date', 'description', 'slug']);
 
   return {
     props: { allPosts },

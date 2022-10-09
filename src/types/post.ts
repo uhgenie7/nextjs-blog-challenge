@@ -10,9 +10,5 @@ export interface ISimplePost {
 }
 
 export interface IPost {
-  title: string;
-  description: string;
-  date: string;
-  content: string;
-  slug: string;
+  postData: ISimplePost;
 }

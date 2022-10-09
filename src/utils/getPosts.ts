@@ -12,7 +12,7 @@ export function getAllPostSlugs() {
   return fs.readdirSync(postsRootDirectory);
 }
 
-export function getPostBySlug(fileName: string, frontMatters: string[] = []) {
+export function getPostBySlug(fileName: string, frontMatters: string[]) {
   const postBySlug: IFrontMatters = {};
 
   const title = fileName.replace(/\.md$/, '');
@@ -38,7 +38,7 @@ export function getPostBySlug(fileName: string, frontMatters: string[] = []) {
   return postBySlug;
 }
 
-export function getAllPosts(frontMatters: string[] = []) {
+export function getAllPostsData(frontMatters: string[]) {
   const slugs = getAllPostSlugs();
   const posts = slugs.map((fileName) => getPostBySlug(fileName, frontMatters));
   return posts;
