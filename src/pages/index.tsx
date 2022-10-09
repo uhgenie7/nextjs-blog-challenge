@@ -19,7 +19,7 @@ const Home = ({ allPosts }: IAllPosts) => {
 };
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPostsData(['title', 'date', 'description', 'slug']);
+  const allPosts = getAllPostsData(['title', 'description', 'date', 'slug']);
 
   return {
     props: { allPosts },

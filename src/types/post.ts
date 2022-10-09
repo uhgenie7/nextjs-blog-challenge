@@ -1,5 +1,5 @@
 export interface IAllPosts {
-  allPosts: IPost[];
+  allPosts: ISimplePost[];
 }
 
 export interface ISimplePost {
@@ -10,5 +10,9 @@ export interface ISimplePost {
 }
 
 export interface IPost {
-  postData: ISimplePost;
+  postData: {
+    title: string;
+    date: string;
+    contentHtml: string;
+  };
 }
