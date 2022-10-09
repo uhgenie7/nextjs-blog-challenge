@@ -56,8 +56,9 @@
 
 ## 라이브러리
 
-| 라이브러리   | 사이트                                       | 용도                                      |
+| 라이브러리명 | 사이트                                       | 용도                                      |
 | ------------ | -------------------------------------------- | ----------------------------------------- |
 | remark       | https://github.com/remarkjs/remark/tree/main | 플러그인으로 마크다운을 변환하는 도구     |
 | └remark-html | https://github.com/remarkjs/remark-html      | 구문 트리를 직렬화된 HTML로 변환          |
 | gray-matter  | https://github.com/jonschlinkert/gray-matter | 문자열 또는 파일에서 front-matter을 parse |
+| Prism        | https://prismjs.com/                         | 코드 하이라이터                           |
