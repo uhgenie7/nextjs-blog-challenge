@@ -11,10 +11,14 @@ interface IParams {
 const PostDetail = ({ postData }: IPost) => {
   return (
     <Layout>
-      <h2>{postData.title}</h2>
-      <em>{postData.date}</em>
-      <br />
-      <Post>{postData.contentHtml}</Post>
+      <article className="prose m-auto my-4 px-8 sm:my-16 lg:prose-xl">
+        <h2 className="mt-0 mb-2 text-5xl font-normal leading-normal text-rose-800">
+          {postData.title}
+        </h2>
+        <em>{postData.date}</em>
+        <br />
+        <Post>{postData.contentHtml}</Post>
+      </article>
     </Layout>
   );
 };
