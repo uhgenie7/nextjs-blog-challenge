@@ -40,6 +40,8 @@ export function getPostBySlug(fileName: string, frontMatters: string[]) {
 
 export function getAllPostsData(frontMatters: string[]) {
   const slugs = getAllPostSlugs();
-  const posts = slugs.map((fileName) => getPostBySlug(fileName, frontMatters));
+  const posts = slugs
+    .map((fileName) => getPostBySlug(fileName, frontMatters))
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
