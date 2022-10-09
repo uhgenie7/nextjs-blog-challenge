@@ -1,7 +1,7 @@
 import type { ISimplePost } from '@src/types/post';
 import Link from 'next/link';
 
-const SimplePost = ({ title, description, date, slug }: ISimplePost) => {
+const PreviewPost = ({ title, description, date, slug }: ISimplePost) => {
   return (
     <li>
       <Link href={`/posts/${encodeURIComponent(slug)}`}>
@@ -17,4 +17,4 @@ const SimplePost = ({ title, description, date, slug }: ISimplePost) => {
   );
 };
 
-export default SimplePost;
+export default PreviewPost;

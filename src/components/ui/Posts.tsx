@@ -1,5 +1,5 @@
 import type { IAllPosts } from '@src/types/post';
-import SimplePost from './SimplePost';
+import PreviewPost from './PreviewPost';
 
 const Posts = ({ allPosts }: IAllPosts) => {
   return (
@@ -7,7 +7,7 @@ const Posts = ({ allPosts }: IAllPosts) => {
       <ul>
         {allPosts &&
           allPosts.map(({ ...props }) => (
-            <SimplePost key={props.slug} {...props} />
+            <PreviewPost key={props.slug} {...props} />
           ))}
       </ul>
     </section>
