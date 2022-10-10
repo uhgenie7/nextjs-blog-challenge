@@ -11,7 +11,7 @@ interface IParams {
 const PostDetail = ({ postData }: IPost) => {
   return (
     <Layout>
-      <article className="prose m-auto my-4 px-8 sm:my-16 lg:prose-xl">
+      <article className="prose m-auto my-4 sm:my-16 lg:prose-xl">
         <h2 className="mt-0 mb-2 text-5xl font-normal leading-normal text-rose-800">
           {postData.title}
         </h2>

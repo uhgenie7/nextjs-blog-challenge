@@ -11,7 +11,7 @@ const Post = ({ children: content }: { children: string }) => {
 
   return (
     <div
-      className="prose m-auto my-4 px-8 sm:my-16 lg:prose-xl"
+      className="prose m-auto my-4 sm:my-16 lg:prose-xl"
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );
