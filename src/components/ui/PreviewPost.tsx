@@ -7,9 +7,9 @@ const PreviewPost = ({ title, description, date, slug }: IPreviewPost) => {
       <Link href={`/posts/${encodeURIComponent(slug)}`}>
         <a>
           <div>
-            <h3 className="mt-0 text-4xl font-normal leading-normal text-pink-800">
+            <h2 className="mt-0 text-4xl font-normal leading-normal text-pink-800">
               {title}
-            </h3>
+            </h2>
             <p className="mt-0 font-normal leading-normal text-pink-800">
               {description}
             </p>
