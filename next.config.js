@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer({
+  compress: true,
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
@@ -7,6 +12,16 @@ const nextConfig = {
       exclude: ['error'],
     },
   },
-};
-
-module.exports = nextConfig;
+  webpack(config, { webpack }) {
+    const prod = process.env.NODE_ENV === 'production';
+    return {
+      ...config,
+      mode: prod ? 'production' : 'development',
+      devtool: prod ? 'hidden-source-map' : 'eval-source-map',
+      plugins: [
+        ...config.plugins,
+        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /^\.\/ko$/),
+      ],
+    };
+  },
+});
