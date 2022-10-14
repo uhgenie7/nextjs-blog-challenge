@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAllPostsData, getAllPostSlugs } from '@src/utils/getPosts';
+import { getAllPostsData } from '@src/utils/getPosts';
 
 /**
  *
@@ -11,7 +11,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const allPosts = getAllPostsData(['title', 'description', 'date', 'slug']);
-  console.log(res);
+  const allPosts = getAllPostsData();
   res.status(200).json(allPosts);
 }

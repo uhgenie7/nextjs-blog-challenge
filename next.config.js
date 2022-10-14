@@ -7,11 +7,11 @@ module.exports = withBundleAnalyzer({
   compress: true,
   reactStrictMode: true,
   swcMinify: true,
-  // compiler: {
-  //   removeConsole: {
-  //     exclude: ['error'],
-  //   },
-  // },
+  compiler: {
+    removeConsole: {
+      exclude: ['error'],
+    },
+  },
   webpack(config, { webpack }) {
     const prod = process.env.NODE_ENV === 'production';
     return {
