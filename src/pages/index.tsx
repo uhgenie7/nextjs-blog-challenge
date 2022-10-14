@@ -5,14 +5,24 @@ import { getAllPostsData } from '@src/utils/getPosts';
 import Posts from '@src/components/ui/Posts';
 import type { IAllPosts } from '@src/types/post';
 import useSWR, { useSWRConfig } from 'swr';
+import { GET_ALL_POSTS } from '@src/constants';
 
-const Home = ({ allPosts }: IAllPosts) => {
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const Home = ({ fallback }) => {
   // const { cache, mutate, ...extraConfig } = useSWRConfig();
-  // console.log(cache);
-  // const { data } = useSWR('/api/allPosts', {
-  //   fetcher: undefined,
-  //   fallbackData: allPosts,
-  // });
+  const { data, error } = useSWR(GET_ALL_POSTS, fetcher, {
+    fallbackData: fallback,
+  });
+
+  // const { data, error } = useSWR('/api/posts', fetcher);
+
+  console.log(data);
+  if (!data) return <div>로딩중..</div>;
+  if (error) {
+    console.error(error);
+    return <div>에러</div>;
+  }
 
   return (
     <Layout>
@@ -20,10 +30,7 @@ const Home = ({ allPosts }: IAllPosts) => {
         <title>Next.js Blog Challenge</title>
       </Head>
       <Container>
-        {
-          // data &&
-          <Posts allPosts={allPosts} />
-        }
+        <Posts allPosts={data.allPosts} />
       </Container>
     </Layout>
   );
@@ -34,7 +41,10 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      allPosts,
+      // allPosts,
+      fallback: {
+        GET_ALL_POSTS: allPosts,
+      },
     },
   };
 };

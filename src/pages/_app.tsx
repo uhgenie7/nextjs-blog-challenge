@@ -8,12 +8,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <SWRConfig
       value={{
         provider: () => new Map(),
-
-        onError: (error, key) => {
-          if (error.status !== 403 && error.status !== 404) {
-            console.error('에러발생');
-          }
-        },
       }}
     >
       <Component {...pageProps} />
