@@ -1,7 +1,7 @@
 import Layout from '@src/components/ui/Layout';
 import { getPostBySlug, getAllPostsData } from '@src/utils/getPosts';
 import remarkHtml from '@src/utils/remarkHtml';
-import useSWR, { SWRConfig } from 'swr';
+import useSWR, { SWRConfig, useSWRConfig } from 'swr';
 import { fetcher } from '@src/utils/fetcher';
 import { useRouter } from 'next/router';
 import type { Fallback } from '@src/types/swr';
@@ -11,11 +11,15 @@ interface IParams {
 }
 
 const PostContent = () => {
+  const { cache } = useSWRConfig();
   const { query } = useRouter();
   const { data: post, error } = useSWR(
     `/api/posts/${query.slug || null}`,
     fetcher
   );
+
+  const check = cache.get('/api/posts');
+  console.log(check);
 
   if (error) {
     console.error(error);
@@ -28,14 +32,14 @@ const PostContent = () => {
 
   return (
     <Layout>
-      <article className='prose m-auto my-4 sm:my-16 lg:prose-xl'>
-        <h2 className='mt-0 mb-2 text-5xl font-normal leading-normal text-rose-800'>
+      <article className="prose m-auto my-4 sm:my-16 lg:prose-xl">
+        <h2 className="mt-0 mb-2 text-5xl font-normal leading-normal text-rose-800">
           {title}
         </h2>
         <em>{date}</em>
         <br />
         <div
-          className='prose m-auto my-4 sm:my-16 lg:prose-xl'
+          className="prose m-auto my-4 sm:my-16 lg:prose-xl"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
       </article>
