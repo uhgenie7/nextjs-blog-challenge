@@ -3,26 +3,33 @@ import Layout from '@src/components/ui/Layout';
 import Container from '@src/components/ui/Container';
 import { getAllPostsData } from '@src/utils/getPosts';
 import Posts from '@src/components/ui/Posts';
-import type { IAllPosts } from '@src/types/post';
+import { SWRConfig } from 'swr';
+import type { Fallback } from '@src/types/swr';
 
-const Home = ({ allPosts }: IAllPosts) => {
+const Home = ({ fallback }: Fallback) => {
   return (
     <Layout>
       <Head>
         <title>Next.js Blog Challenge</title>
       </Head>
       <Container>
-        <Posts allPosts={allPosts} />
+        <SWRConfig value={{ fallback }}>
+          <Posts />
+        </SWRConfig>
       </Container>
     </Layout>
   );
 };
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPostsData(['title', 'description', 'date', 'slug']);
+  const allPosts = getAllPostsData();
 
   return {
-    props: { allPosts },
+    props: {
+      fallback: {
+        '/api/posts': allPosts,
+      },
+    },
   };
 };
 
