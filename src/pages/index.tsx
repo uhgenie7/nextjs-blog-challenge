@@ -5,7 +5,7 @@ import { getAllPostsData } from '@src/utils/getPosts';
 import Posts from '@src/components/ui/Posts';
 import { SWRConfig } from 'swr';
 import type { Fallback } from '@src/types/swr';
-
+import Link from 'next/link';
 const Home = ({ fallback }: Fallback) => {
   return (
     <Layout>
@@ -17,6 +17,13 @@ const Home = ({ fallback }: Fallback) => {
           <Posts />
         </SWRConfig>
       </Container>
+      <div className="mt-16 text-center">
+        <Link href={'/posts/write'}>
+          <a className="center w-full cursor-pointer bg-pink-500/75 p-2 hover:bg-pink-700 hover:text-gray-50">
+            글쓰기
+          </a>
+        </Link>
+      </div>
     </Layout>
   );
 };

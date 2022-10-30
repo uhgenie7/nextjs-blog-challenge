@@ -16,7 +16,7 @@ export async function createPost({
   slug: '${title}'
   date: '${date}'
   description: '${description}'
-  ---
+---
 
   ${content}
 `;
