@@ -47,6 +47,7 @@ const PostContent = () => {
   );
 };
 
+// 실제 데이터를 가져옴
 export async function getStaticProps({ params }: IParams) {
   const post = getPostBySlug(params.slug);
   const contentHtml = await remarkHtml(post.content || '');
@@ -63,6 +64,7 @@ export async function getStaticProps({ params }: IParams) {
   };
 }
 
+// 목록을 배열로 가져옴
 export async function getStaticPaths() {
   const posts = getAllPostsData();
 
