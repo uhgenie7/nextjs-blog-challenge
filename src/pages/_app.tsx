@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import 'tailwindcss/tailwind.css';
+import '../styles/global.css';
 import 'prismjs/themes/prism-tomorrow.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
